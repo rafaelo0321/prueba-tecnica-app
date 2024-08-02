@@ -1,0 +1,36 @@
+<div class="container" *ngIf="!client">
+  <div class="row">
+    <div class="col-8 d-flex justify-content-center">
+      <form [formGroup]="documentoForm" (ngSubmit)="searchDocument()">
+        <div class="border border-primary m-4">
+          <div class="m-2">
+            <label class="m-1"><strong>Document type:</strong></label>
+            <br>
+            <select formControlName="typoDocument">
+              <option value="" disabled selected> Select a type</option>
+              <option value="CC">Citizenship Card</option>
+              <option value="P">Passport</option>
+            </select>
+          </div>
+          <div class="m-2">
+            <label class="m-1"><strong>Document number:</strong> </label>
+            <br>
+            <input type="text" formControlName="numberDocument" placeholder="Enter the document number">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-2" [disabled]="!documentoForm.valid">Search Client</button>
+
+      </form>
+
+    </div>
+    </div>
+</div>
+<div *ngIf="error" class="alert alert-danger">
+  {{ error }}
+</div>
+
+<div *ngIf="client">
+  <app-client></app-client>
+  <button class="btn btn-outline-primary mt-3" (click)="volver()">Volver</button>
+</div>
