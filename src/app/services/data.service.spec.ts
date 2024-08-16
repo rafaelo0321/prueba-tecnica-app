@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 describe('DataService', () => {
   let service: DataService;
   let httpMock: HttpTestingController;
-  const apiUrl = 'http://localhost:9000/api/v1/client/show/for';
+  const apiUrl = 'http://localhost:8090/api/v1/client/show/for';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
