@@ -30,7 +30,7 @@ describe('DataService', () => {
     it('should return an Observable<any>', () => {
       const typoDocument = 'CC';
       const numberDocument = '98765432';
-      const mockResponse = { id: 1, name: 'Maria' };
+      const mockResponse = { id: 1, firstName: 'Maria' };
 
       service.searchClient(typoDocument, numberDocument).subscribe(response => {
         expect(response).toEqual(mockResponse);
