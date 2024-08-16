@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client',
-  standalone: true,
-  imports: [],
   templateUrl: './client.component.html',
   styleUrl: './client.component.css'
 })

@@ -47,24 +47,24 @@ describe('QueryClientComponent', () => {
     expect(component.documentoForm.controls['numberDocument'].valid).toBeFalsy();
 
     component.documentoForm.controls['typoDocument'].setValue('CC');
-    component.documentoForm.controls['numberDocument'].setValue('12345678');
+    component.documentoForm.controls['numberDocument'].setValue('98765432');
 
     expect(component.documentoForm.controls['typoDocument'].valid).toBeTruthy();
     expect(component.documentoForm.controls['numberDocument'].valid).toBeTruthy();
   });
 
   it('should call searchDocument and navigate to client page on success', () => {
-    const mockResponse = { id: 1, name: 'John Doe' };
+    const mockResponse = { id: 1, name: '98765432' };
     dataService.searchClient.and.returnValue(of(mockResponse));
     dataService.setClientData.and.callThrough();
 
     component.documentoForm.controls['typoDocument'].setValue('CC');
-    component.documentoForm.controls['numberDocument'].setValue('12345678');
+    component.documentoForm.controls['numberDocument'].setValue('98765432');
     fixture.detectChanges();
 
     component.searchDocument();
 
-    expect(dataService.searchClient).toHaveBeenCalledWith('CC', '12345678');
+    expect(dataService.searchClient).toHaveBeenCalledWith('CC', '98765432');
     expect(dataService.setClientData).toHaveBeenCalledWith(mockResponse);
     expect(router.navigate).toHaveBeenCalledWith(['/client']);
   });
@@ -74,7 +74,7 @@ describe('QueryClientComponent', () => {
     dataService.searchClient.and.returnValue(throwError(errorResponse));
 
     component.documentoForm.controls['typoDocument'].setValue('CC');
-    component.documentoForm.controls['numberDocument'].setValue('12345678');
+    component.documentoForm.controls['numberDocument'].setValue('98765432');
     fixture.detectChanges();
 
     spyOn(window, 'alert');
@@ -86,7 +86,7 @@ describe('QueryClientComponent', () => {
   });
 
   it('should call volver method and navigate to root', () => {
-    component.client = { id: 1, name: 'Juan Gómez' };
+    component.client = { id: 1, name: 'Maria' };
     component.error = 'An error occurred';
 
     component.volver();
@@ -101,7 +101,7 @@ describe('QueryClientComponent', () => {
     expect(submitButton.disabled).toBeTrue();
 
     component.documentoForm.controls['typoDocument'].setValue('CC');
-    component.documentoForm.controls['numberDocument'].setValue('12345678');
+    component.documentoForm.controls['numberDocument'].setValue('98765432');
     fixture.detectChanges();
 
     expect(submitButton.disabled).toBeFalse();

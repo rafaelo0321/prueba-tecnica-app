@@ -10,11 +10,10 @@ import { Client } from './models/client.model';
 export class AppComponent {
   title = 'Welcome to this technical test';
   http = inject(HttpClient);
-
   clients : Client[] = [];
 
   ngOnInit(){
-    this.http.get<Client[]>("http://localhost:8090/api/v1/client/showAll", {
+    this.http.get<Client[]>("http://localhost:9000/api/v1/client/showAll", {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'Accept': 'application/json'

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject,of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://localhost:8090/api/v1/client/show/for';
+  private apiUrl = 'http://localhost:9000/api/v1/client/show/for';
   private clientSource = new BehaviorSubject<any>(null);
   client$ = this.clientSource.asObservable();
 
@@ -21,3 +21,4 @@ export class DataService {
     this.clientSource.next(data);
   }
 }
+

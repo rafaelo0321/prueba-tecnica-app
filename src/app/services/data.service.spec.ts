@@ -1,14 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { DataService } from './data.service';
+import { BehaviorSubject } from 'rxjs';
 
 describe('DataService', () => {
   let service: DataService;
   let httpMock: HttpTestingController;
-  const apiUrl = 'http://localhost:8090/api/v1/client/show/for';
+  const apiUrl = 'http://localhost:9000/api/v1/client/show/for';
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       providers: [DataService]
     });
 
@@ -26,9 +28,9 @@ describe('DataService', () => {
 
   describe('searchClient', () => {
     it('should return an Observable<any>', () => {
-      const typoDocument = 'P';
-      const numberDocument = '12345678';
-      const mockResponse = { id: 1, name: 'Juanito Gómez' };
+      const typoDocument = 'CC';
+      const numberDocument = '98765432';
+      const mockResponse = { id: 1, name: 'Maria' };
 
       service.searchClient(typoDocument, numberDocument).subscribe(response => {
         expect(response).toEqual(mockResponse);
@@ -42,7 +44,7 @@ describe('DataService', () => {
 
   describe('setClientData', () => {
     it('should set client data', () => {
-      const mockClientData = { id: 1, name: 'John Doe' };
+      const mockClientData = { id: 1, name: 'Maria' };
       service.setClientData(mockClientData);
       service.client$.subscribe(data => {
         expect(data).toEqual(mockClientData);
@@ -50,3 +52,4 @@ describe('DataService', () => {
     });
   });
 });
+
