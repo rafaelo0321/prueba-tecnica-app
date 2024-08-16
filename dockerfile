@@ -1,8 +1,6 @@
-FROM node:16-alpine
+FROM node:18
 
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-CMD ["npm", "start"]
+RUN mkdir -p /home/app
+COPY . /home/app
+EXPOSE 4200
+CMD ["node", "/home/app/index.js"]
